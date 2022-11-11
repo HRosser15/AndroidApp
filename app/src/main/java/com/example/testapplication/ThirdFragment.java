@@ -1,9 +1,11 @@
 package com.example.testapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -45,15 +47,31 @@ public class ThirdFragment extends Fragment {
         binding.submitSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MainActivity m = new MainActivity();
+                m.handleText(view);
                 // if username is NOT unique, pop up error message
                 // if password does NOT meet requirements, pop up error message
                 // else, create account and return to main page for user to log in.
 
                 //currently sign up sends button user back to home screen
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_FirstFragment);
+                //NavHostFragment.findNavController(ThirdFragment.this)
+                //        .navigate(R.id.action_ThirdFragment_to_FirstFragment);
             }
         });
+
+    }
+
+
+
+
+    public void handleText(View v) {
+
+    }
+    public boolean usernameIsUnique(String s) {
+        if (s.equals("bob1")) {
+            return false;
+        }
+        return true;
     }
 
     @Override

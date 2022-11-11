@@ -3,6 +3,8 @@ package com.example.testapplication;
 import android.os.Bundle;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -12,6 +14,7 @@ import com.example.testapplication.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +42,31 @@ private ActivityMainBinding binding;
             }
         });
     }
+
+    public void handleText(View v) {
+        TextView uName = findViewById(R.id.SignUpUsername);
+        String username = uName.getText().toString();
+        Log.d("new username", username);
+
+        TextView pw = findViewById(R.id.SignUpPassword);
+        String password = pw.getText().toString();
+        Log.d("new password", password);
+        boolean uNameIsUnique = usernameIsUnique(username);
+        if (uNameIsUnique) {
+            ((TextView)findViewById(R.id.Verify)).setText("Success!");
+        }
+        else {
+            ((TextView)findViewById(R.id.Verify)).setText("Error: Username unavailable :(");
+        }
+    }
+
+    public boolean usernameIsUnique(String s) {
+        if (s.equals("bob1")) {
+            return false;
+        }
+        return true;
+    }
+
 @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
