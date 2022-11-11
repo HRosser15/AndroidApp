@@ -13,9 +13,16 @@ import com.example.testapplication.databinding.ActivityMainBinding;
 import com.example.testapplication.databinding.FragmentSecondBinding;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
 public class SecondFragment extends Fragment {
 
 private FragmentSecondBinding binding;
+public File userDatabase; //to get the local userDatabase file
+private Scanner userDataScan; //to scan user database File
 
     @Override
     public View onCreateView(
@@ -49,14 +56,26 @@ private FragmentSecondBinding binding;
                 //else, pop up an error message that credentials don't match anything in our system.
 
 
-                //currently log in sends button user back to home screen
+                //currently log in sends button user back to home screen (disabled to show actual functionality)
+                /*
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                */
 
-                //working on recieving user input below
+                //working on receiving user input below
                 String userNameInput = binding.loginUsername.getText().toString(); //gets input from input text field
                 String passWordInput = binding.loginPassword.getText().toString(); //gets input from input password field
-                
+
+                //to look at local userDatabase below
+                try {
+                    //looking at and comparing user database here
+
+
+
+                } catch (Exception e) {
+
+                }
+
 
             }
         });
