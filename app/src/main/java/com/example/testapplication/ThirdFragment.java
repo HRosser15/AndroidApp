@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -31,7 +32,7 @@ public class ThirdFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        /** sign up screen "BACK" button event - goes to home screen */
+        /** "BACK" button event - goes to home screen */
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,22 +41,39 @@ public class ThirdFragment extends Fragment {
             }
         });
 
-        /** sign up screen "SIGN UP" button event */
+        /** "SIGN UP" button event - Pops up error if invalid username or password; does nothing if valid */
 
         /** !!! Needs edit - sign up button goes to home screen !!!
-         * Ideally, it will take the user to a new page that welcomes them and asks them to log in */
+         * Ideally, it will take the user to a new page (activity or fragment) that welcomes them and asks them to log in */
         binding.submitSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity m = new MainActivity();
-                m.handleText(view);
-                // if username is NOT unique, pop up error message
-                // if password does NOT meet requirements, pop up error message
-                // else, create account and return to main page for user to log in.
+                //MainActivity m = new MainActivity();
+                //m.handleText(view);
+                String username = binding.signupUsername.getText().toString(); //gets input from input text field
+                String password = binding.signupPassword.getText().toString(); //gets input from input password field
 
-                //currently sign up sends button user back to home screen
-                //NavHostFragment.findNavController(ThirdFragment.this)
-                //        .navigate(R.id.action_ThirdFragment_to_FirstFragment);
+                // Log new username and password in Logcat
+                Log.d("new username: ", username);
+                Log.d("new password: ", password);
+
+                boolean unIsUnique = usernameIsUnique(username);
+                if (!unIsUnique) {
+                    Toast.makeText(ThirdFragment.super.getContext(),
+                            "ERROR: Username is already in use", Toast.LENGTH_LONG).show();
+
+                }
+                if (!pwIsStrong(password)) {
+                    Toast.makeText(ThirdFragment.super.getContext(),
+                            "ERROR: Password does not meet requirements", Toast.LENGTH_LONG).show();
+                }
+
+                /** !!! Sign up button does nothing if username and password are valid */
+
+                // This 2-line code section below will navigate, I'm just leaving it here in
+                // case we can use it to navigate to the next activity once we have it set up.
+                    //  NavHostFragment.findNavController(ThirdFragment.this)
+                    //          .navigate(R.id.action_ThirdFragment_to_FirstFragment);
             }
         });
 
@@ -64,13 +82,53 @@ public class ThirdFragment extends Fragment {
 
 
 
-    public void handleText(View v) {
 
-    }
+    //Tests if username is unique
     public boolean usernameIsUnique(String s) {
+        // This will need to read from a file or database
+        // and confirm the username does not match any existing usernames
         if (s.equals("bob1")) {
             return false;
         }
+        return true;
+    }
+
+    //Tests if password meets requirements
+    public boolean pwIsStrong(String s) {
+        boolean lengthIsValid = false;
+        boolean containsNumber = false;
+        boolean containsSpace = false;
+        boolean containsSpecialChar = false;
+
+        // tests password length
+        if (s.length() >= 8) {
+            lengthIsValid = true;
+        }
+
+        // tests password contains at least one number,
+        // one special character, and no spaces
+        for (int i = 0; i < s.length(); i++) {
+            // Confirm password contains a digit
+            if (Character.isDigit(s.charAt(i))) {
+                containsNumber = true;
+            }
+            // Confirm password has no spaces
+            if (Character.isWhitespace(s.charAt(i))) {
+                containsSpace = true;
+            }
+            // Confirm password has at least one special character
+            if (s.charAt(i) == 33 || s.charAt(i) == 35 ||
+                    s.charAt(i) == 36 || s.charAt(i) == 38 ||
+                    s.charAt(i) == 63 || s.charAt(i) == 95 ) {
+                containsSpecialChar = true;
+            }
+        }
+
+        // Send error message if requirements are not met
+        if (!lengthIsValid || !containsNumber || containsSpace || !containsSpecialChar) {
+            return false;
+        }
+        // else, return true
         return true;
     }
 

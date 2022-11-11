@@ -44,13 +44,13 @@ private ActivityMainBinding binding;
     }
 
     public void handleText(View v) {
-        TextView uName = findViewById(R.id.SignUpUsername);
+        TextView uName = findViewById(R.id.singup_username_view);
         String username = uName.getText().toString();
-        Log.d("new username", username);
+        Log.d("new username: ", username);
 
-        TextView pw = findViewById(R.id.SignUpPassword);
+        TextView pw = findViewById(R.id.login_password_view);
         String password = pw.getText().toString();
-        Log.d("new password", password);
+        Log.d("new password: ", password);
         boolean uNameIsUnique = usernameIsUnique(username);
         if (uNameIsUnique) {
             ((TextView)findViewById(R.id.Verify)).setText("Success!");
