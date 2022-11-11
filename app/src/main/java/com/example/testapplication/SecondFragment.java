@@ -29,6 +29,7 @@ private FragmentSecondBinding binding;
         super.onViewCreated(view, savedInstanceState);
 
         /** login screen "BACK" button event - goes to home screen*/
+        //ignore this line
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
