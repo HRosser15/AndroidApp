@@ -8,7 +8,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.example.testapplication.databinding.ActivityMainBinding;
 import com.example.testapplication.databinding.FragmentSecondBinding;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class SecondFragment extends Fragment {
 
@@ -49,6 +52,12 @@ private FragmentSecondBinding binding;
                 //currently log in sends button user back to home screen
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
+
+                //working on recieving user input below
+                String userNameInput = binding.loginUsername.getText().toString(); //gets input from input text field
+                String passWordInput = binding.loginPassword.getText().toString(); //gets input from input password field
+                
+
             }
         });
     }
