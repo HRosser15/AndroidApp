@@ -37,5 +37,20 @@
         <action
             android:id="@+id/action_ThirdFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_ThirdFragment_to_FourthFragment"
+            app:destination="@id/FourthFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/FourthFragment"
+        android:name="com.example.testapplication.FourthFragment"
+        android:label="Welcome!"
+        tools:layout="fragment_fourth" >
+
+        <action
+            android:id="@+id/action_FourthFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+
+
 </navigation>
