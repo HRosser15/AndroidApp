@@ -71,9 +71,13 @@ public class ThirdFragment extends Fragment {
                 // meet requirements, but that is low priority right now.
                 // =====================================================================================
 
+
+
                 // If username and password are valid, create account and switch pages
-                // METHOD HERE TO ADD USERNAME AND PASSWORD TO ACCOUNT
                 if (pwIsStrong(password) && usernameIsUnique(username)) {
+                    // create a new user with input values
+                    User newUser = new User(username, password);
+
                     NavHostFragment.findNavController(ThirdFragment.this)
                             .navigate(R.id.action_ThirdFragment_to_FourthFragment);
                 }

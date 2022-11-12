@@ -23,15 +23,18 @@ public class SecondFragment extends Fragment {
 private FragmentSecondBinding binding;
 public File userDatabase; //to get the local userDatabase file
 private Scanner userDataScan; //to scan user database File
+    UserLocalStore userLocalStore;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+        userLocalStore = new UserLocalStore(SecondFragment.super.getContext());
 
-      binding = FragmentSecondBinding.inflate(inflater, container, false);
-      return binding.getRoot();
+        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+
 
     }
 
@@ -52,8 +55,8 @@ private Scanner userDataScan; //to scan user database File
         binding.submitLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //if credentials match username and password in the system, navigate to account page.
-                //else, pop up an error message that credentials don't match anything in our system.
+
+
 
 
                 //currently log in sends button user back to home screen (disabled to show actual functionality)
@@ -75,6 +78,12 @@ private Scanner userDataScan; //to scan user database File
                 } catch (Exception e) {
 
                 }
+                //if credentials match username and password in the system, navigate to account page.
+                User user = new User(null, null);
+
+                userLocalStore.storeUserData(user);
+                userLocalStore.setUserLoggedIn(true);
+                //else, pop up an error message that credentials don't match anything in our system.
 
 
             }
