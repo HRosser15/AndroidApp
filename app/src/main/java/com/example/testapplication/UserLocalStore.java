@@ -15,7 +15,7 @@ public class UserLocalStore {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.putString("username", user.username);
         spEditor.putString("password", user.password);
-        spEditor.commit();
+        spEditor.apply();
     }
 
     public User getLoggedInUser() {
@@ -30,7 +30,7 @@ public class UserLocalStore {
     public void setUserLoggedIn(boolean loggedIn) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.putBoolean("loggedIn", loggedIn);
-        spEditor.commit();
+        spEditor.apply();
     }
 
     public boolean getUserLoggedIn() {
@@ -44,6 +44,6 @@ public class UserLocalStore {
     public void clearUserData() {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.clear();
-        spEditor.commit();
+        spEditor.apply();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.testapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class SecondFragment extends Fragment {
@@ -23,14 +25,22 @@ public class SecondFragment extends Fragment {
 private FragmentSecondBinding binding;
 public File userDatabase; //to get the local userDatabase file
 private Scanner userDataScan; //to scan user database File
+    /* ================================================================================
+        for connecting app to a server
     UserLocalStore userLocalStore;
+    ================================================================================
+         */
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+        /* ================================================================================
+        for connecting app to a server
         userLocalStore = new UserLocalStore(SecondFragment.super.getContext());
+        ================================================================================
+         */
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -56,18 +66,20 @@ private Scanner userDataScan; //to scan user database File
             @Override
             public void onClick(View view) {
 
+                //Receive user input
+                String userNameInput = Objects.requireNonNull(binding.loginUsername.getText()).toString(); //gets input from input text field
+                String passWordInput = Objects.requireNonNull(binding.loginPassword.getText()).toString(); //gets input from input password field
 
+                // Log username and password in Logcat
+                Log.d("username", userNameInput);
+                Log.d("password", passWordInput);
 
+                /** Temporary if statement to test log in feature - needs to be updated to check match from file/database */
+                if (userNameInput.equals("bob2") && passWordInput.equals("abcdef1!")) {
 
-                //currently log in sends button user back to home screen (disabled to show actual functionality)
-                /*
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-                */
-
-                //working on receiving user input below
-                String userNameInput = binding.loginUsername.getText().toString(); //gets input from input text field
-                String passWordInput = binding.loginPassword.getText().toString(); //gets input from input password field
+                    NavHostFragment.findNavController(SecondFragment.this)
+                            .navigate(R.id.action_SecondFragment_to_AccountPage);
+                }
 
                 //to look at local userDatabase below
                 try {
@@ -79,11 +91,15 @@ private Scanner userDataScan; //to scan user database File
 
                 }
                 //if credentials match username and password in the system, navigate to account page.
+                /* ================================================================================
+                 Method for connecting app to a server
                 User user = new User(null, null);
 
                 userLocalStore.storeUserData(user);
                 userLocalStore.setUserLoggedIn(true);
                 //else, pop up an error message that credentials don't match anything in our system.
+                =====================================================================================
+                 */
 
 
             }

@@ -22,12 +22,20 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    /* ================================================================================
+        for connecting app to a server
     UserLocalStore userLocalStore;
+    ================================================================================
+         */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        userLocalStore = new UserLocalStore(this);
+        /* ================================================================================
+        for connecting app to a server
+        userLocalStore = new UserLocalStore(SecondFragment.super.getContext());
+        ================================================================================
+         */
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -47,12 +55,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /* ================================================================================
+                 Methods for connecting app to a server
+
+    // Checks if user is logged in onStart
     @Override
     protected void onStart() {
         super.onStart();
 
         if (authenticate() == true) {
-
+            displayUserDetails();
         }
     }
 
@@ -62,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayUserDetails() {
         User user = userLocalStore.getLoggedInUser();
-
+        username.setText(user.username); //can repeat this line with other attributes
 
     }
 
