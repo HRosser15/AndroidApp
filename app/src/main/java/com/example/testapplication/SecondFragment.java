@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -79,6 +80,11 @@ private Scanner userDataScan; //to scan user database File
 
                     NavHostFragment.findNavController(SecondFragment.this)
                             .navigate(R.id.action_SecondFragment_to_AccountPage);
+                }
+                //pop up error if log in credentials don't match
+                else {
+                    Toast.makeText(SecondFragment.super.getContext(),
+                            "Invalid username or password", Toast.LENGTH_LONG).show();
                 }
 
                 //to look at local userDatabase below

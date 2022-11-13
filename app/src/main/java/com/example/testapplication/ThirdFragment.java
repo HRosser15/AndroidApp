@@ -77,6 +77,10 @@ public class ThirdFragment extends Fragment {
                 if (pwIsStrong(password) && usernameIsUnique(username)) {
                     // create a new user with input values
                     User newUser = new User(username, password);
+
+                    // Log userId in Logcat
+                    Log.d("userId", String.valueOf(newUser.userId));
+
                     // creates default checking account with new user's userId
                     Checking checkingAccount = new Checking(newUser.userId);
 
