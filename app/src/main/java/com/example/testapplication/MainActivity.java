@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.View;
+
+import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -19,14 +21,24 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-private ActivityMainBinding binding;
+    private ActivityMainBinding binding;
+    /* ================================================================================
+        for connecting app to a server
+    UserLocalStore userLocalStore;
+    ================================================================================
+         */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /* ================================================================================
+        for connecting app to a server
+        userLocalStore = new UserLocalStore(SecondFragment.super.getContext());
+        ================================================================================
+         */
 
-     binding = ActivityMainBinding.inflate(getLayoutInflater());
-     setContentView(binding.getRoot());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
 
@@ -34,38 +46,58 @@ private ActivityMainBinding binding;
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
+        /* ===This code pops up a message for a button that I deleted
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Replace with text", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
+
+         */
     }
 
-    public void handleText(View v) {
-        TextView uName = findViewById(R.id.singup_username_view);
-        String username = uName.getText().toString();
-        Log.d("new username: ", username);
+    /* ================================================================================
+                 Methods for connecting app to a server
 
-        TextView pw = findViewById(R.id.login_password_view);
-        String password = pw.getText().toString();
-        Log.d("new password: ", password);
-        boolean uNameIsUnique = usernameIsUnique(username);
-        if (uNameIsUnique) {
-            ((TextView)findViewById(R.id.Verify)).setText("Success!");
-        }
-        else {
-            ((TextView)findViewById(R.id.Verify)).setText("Error: Username unavailable :(");
+    // Checks if user is logged in onStart
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (authenticate() == true) {
+            displayUserDetails();
         }
     }
 
-    public boolean usernameIsUnique(String s) {
-        if (s.equals("bob1")) {
-            return false;
-        }
-        return true;
+    private boolean authenticate() {
+        return userLocalStore.getUserLoggedIn();
     }
+
+    private void displayUserDetails() {
+        User user = userLocalStore.getLoggedInUser();
+        username.setText(user.username); //can repeat this line with other attributes
+
+    }
+
+    //Method for logout button
+    /*
+    at top of class, create a local store with
+    UserLocalStore userLocalStore;
+    to give activity access to local store
+
+    in onCreate, give local store context(of activity) with
+    userLocalStore = new UserLocalStore(this);
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getID()) {
+            case R.id.logoutButton:
+                userLocalStore.clearUserData();
+                userLocalStore.setUserLoggedIn(false);
+     */
+
 
 @Override
     public boolean onCreateOptionsMenu(Menu menu) {

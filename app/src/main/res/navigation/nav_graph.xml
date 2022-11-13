@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_AccountPage"
+            app:destination="@id/AccountPage" />
     </fragment>
     <fragment
         android:id="@+id/ThirdFragment"
@@ -50,6 +53,63 @@
         <action
             android:id="@+id/action_FourthFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AccountPage"
+        android:name="com.example.testapplication.AccountPage"
+        android:label="MoonTrust Banking"
+        tools:layout="page_account" >
+
+        <action
+            android:id="@+id/action_AccountPage_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_AccountPage_to_CheckingPage"
+            app:destination="@id/CheckingPage" />
+        <action
+            android:id="@+id/action_AccountPage_to_SavingsPage"
+            app:destination="@id/SavingsPage" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/CheckingPage"
+        android:name="com.example.testapplication.CheckingPage"
+        android:label="Checking Account"
+        tools:layout="CheckingPage" >
+
+        <action
+            android:id="@+id/action_CheckingPage_to_AccountPage"
+            app:destination="@id/AccountPage" />
+        <action
+            android:id="@+id/action_SavingsPage_to_SavingsWithdraw"
+            app:destination="@+id/CheckingWithdraw" />
+        <action
+            android:id="@+id/action_SavingsPage_to_SavingsDeposit"
+            app:destination="@+id/CheckingDeposit" />
+        <action
+            android:id="@+id/action_SavingsPage_to_SavingsTransfer"
+            app:destination="@+id/CheckingTransfer" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/SavingsPage"
+        android:name="com.example.testapplication.SavingsPage"
+        android:label="Savings Account"
+        tools:layout="SavingsPage" >
+
+        <action
+            android:id="@+id/action_SavingsPage_to_AccountPage"
+            app:destination="@id/AccountPage" />
+        <action
+            android:id="@+id/action_SavingsPage_to_SavingsWithdraw"
+            app:destination="@+id/SavingsWithdraw" />
+        <action
+            android:id="@+id/action_SavingsPage_to_SavingsDeposit"
+            app:destination="@+id/SavingsDeposit" />
+        <action
+            android:id="@+id/action_SavingsPage_to_SavingsTransfer"
+            app:destination="@+id/SavingsTransfer" />
+
     </fragment>
 
 

@@ -51,8 +51,8 @@ public class ThirdFragment extends Fragment {
                 String password = binding.signupPassword.getText().toString(); //gets input from input password field
 
                 // Log new username and password in Logcat
-                Log.d("new username: ", username);
-                Log.d("new password: ", password);
+                Log.d("username", username);
+                Log.d("password", password);
 
                 // determine if username is unique
                 if (!usernameIsUnique(username)) {
@@ -71,9 +71,19 @@ public class ThirdFragment extends Fragment {
                 // meet requirements, but that is low priority right now.
                 // =====================================================================================
 
+
+
                 // If username and password are valid, create account and switch pages
-                // METHOD HERE TO ADD USERNAME AND PASSWORD TO ACCOUNT
                 if (pwIsStrong(password) && usernameIsUnique(username)) {
+                    // create a new user with input values
+                    User newUser = new User(username, password);
+
+                    // Log userId in Logcat
+                    Log.d("userId", String.valueOf(newUser.userId));
+
+                    // creates default checking account with new user's userId
+                    Checking checkingAccount = new Checking(newUser.userId);
+
                     NavHostFragment.findNavController(ThirdFragment.this)
                             .navigate(R.id.action_ThirdFragment_to_FourthFragment);
                 }
