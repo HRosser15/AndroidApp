@@ -98,9 +98,6 @@
         tools:layout="SavingsPage" >
 
         <action
-            android:id="@+id/action_SavingsPage_to_AccountPage"
-            app:destination="@id/AccountPage" />
-        <action
             android:id="@+id/action_SavingsPage_to_SavingsWithdraw"
             app:destination="@+id/SavingsWithdraw" />
         <action
@@ -110,6 +107,26 @@
             android:id="@+id/action_SavingsPage_to_SavingsTransfer"
             app:destination="@+id/SavingsTransfer" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/SavingsWithdraw"
+        android:name="com.example.testapplication.SavingsWithdraw"
+        android:label="Withdraw From Savings"
+        tools:layout="SavingsWithdraw" >
+
+        <action
+            android:id="@+id/action_SavingsWithdraw_to_SavingsPage"
+            app:destination="@+id/SavingsPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/SavingsDeposit"
+        android:name="com.example.testapplication.SavingsDeposit"
+        android:label="Deposit To Savings"
+        tools:layout="SavingsDeposit" >
+
+        <action
+            android:id="@+id/action_SavingsDeposit_to_SavingsPage"
+            app:destination="@+id/SavingsPage" />
     </fragment>
 
 

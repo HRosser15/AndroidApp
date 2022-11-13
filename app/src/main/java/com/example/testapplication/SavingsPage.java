@@ -30,25 +30,34 @@ public class SavingsPage extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        /*
-        binding.bLogout.setOnClickListener(new View.OnClickListener() {
+
+        binding.bSavingsDeposit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(AccountPage.this)
-                        .navigate(R.id.action_AccountPage_to_FirstFragment);
+                NavHostFragment.findNavController(SavingsPage.this)
+                        .navigate(R.id.action_SavingsPage_to_SavingsDeposit);
             }
         });
 
-        binding.bChecking.setOnClickListener(new View.OnClickListener() {
+        binding.bSavingsWithdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(AccountPage.this)
-                        .navigate(R.id.action_AccountPage_to_CheckingPage);
+                NavHostFragment.findNavController(SavingsPage.this)
+                        .navigate(R.id.action_SavingsPage_to_SavingsWithdraw);
             }
 
         });
 
-         */
+        binding.bSavingsTransfer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(SavingsPage.this)
+                        .navigate(R.id.action_SavingsPage_to_SavingsTransfer);
+            }
+
+        });
+
+
     }
 
 }
