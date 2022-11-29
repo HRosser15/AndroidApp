@@ -73,10 +73,9 @@ private Scanner userDataScan; //to scan user database File
                 //to look at local userDatabase below
                 try {
                     //looking at and comparing user database here
-                    String currentWorkingDirectory = 
-                    String userDataFilePath = currentWorkingDirectory + "/UserData.csv";
 
-                   userDatabase = new File(userDataFilePath);
+
+                   userDatabase = new File("UserData.csv");
 
                    userDataScan = new Scanner(userDatabase);
                    int i =0;
