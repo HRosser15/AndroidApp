@@ -14,8 +14,11 @@ import com.example.testapplication.databinding.FragmentSecondBinding;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.File;
+
+import java.nio.file.FileSystem;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import java.util.Scanner;
 
 public class SecondFragment extends Fragment {
@@ -23,6 +26,7 @@ public class SecondFragment extends Fragment {
 private FragmentSecondBinding binding;
 public File userDatabase; //to get the local userDatabase file
 private Scanner userDataScan; //to scan user database File
+    public String[][] userDataArray; //to store the data from the UserData file
 
     @Override
     public View onCreateView(
@@ -69,11 +73,28 @@ private Scanner userDataScan; //to scan user database File
                 //to look at local userDatabase below
                 try {
                     //looking at and comparing user database here
+                    String currentWorkingDirectory = 
+                    String userDataFilePath = currentWorkingDirectory + "/UserData.csv";
+
+                   userDatabase = new File(userDataFilePath);
+
+                   userDataScan = new Scanner(userDatabase);
+                   int i =0;
+                    while (userDataScan.hasNextLine()) {
+                        String temp = userDataScan.next();
+                        String[] tempArray = temp.split(",");
+
+                        for (int j=0; j < 6; j++) {
+                            userDataArray[i][j] = tempArray[j];
+                        }
+                        i++;
+                    }
+
 
 
 
                 } catch (Exception e) {
-
+                    System.out.println(e + ", "+ e.getMessage());
                 }
 
 
