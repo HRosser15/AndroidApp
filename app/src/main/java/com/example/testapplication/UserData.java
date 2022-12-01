@@ -25,7 +25,7 @@ public class UserData {
         return userData;
     }
 
-    public void AddUserData(String[] toAdd) {
+    public static void AddUserData(String[] toAdd) {
         userData.add(toAdd);
     }
 

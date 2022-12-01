@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import com.example.testapplication.databinding.FragmentThirdBinding;
 
+import java.util.ArrayList;
+
 
 public class ThirdFragment extends Fragment {
 
@@ -75,6 +77,22 @@ public class ThirdFragment extends Fragment {
 
                 // If username and password are valid, create account and switch pages
                 if (pwIsStrong(password) && usernameIsUnique(username)) {
+                    String[] newUserInformation = new String[5]; //temp to add to Arraylist UserData
+                    ArrayList<String[]> currentData = UserData.GetUserData();
+                    String[] lastUserInfo = (currentData.get(currentData.size()-1));
+
+                    newUserInformation[0] = (String.valueOf(Integer.parseInt(lastUserInfo[0])+1)); //gets the last value of the user data and adds one to it
+                    newUserInformation[1] = username;
+                    newUserInformation[2] = password;
+                    newUserInformation[3] = "Checking"; //need to work on this one to be either Savings or checking, default Checking?
+                    newUserInformation[4] = "0"; //we might want a different initial balance
+
+                    UserData.AddUserData(newUserInformation); //pulls together the information and adds it to the database
+
+                    NavHostFragment.findNavController(ThirdFragment.this)
+                            .navigate(R.id.action_ThirdFragment_to_FourthFragment);
+
+              /*
                     // create a new user with input values
                     User newUser = new User(username, password);
 
@@ -86,6 +104,7 @@ public class ThirdFragment extends Fragment {
 
                     NavHostFragment.findNavController(ThirdFragment.this)
                             .navigate(R.id.action_ThirdFragment_to_FourthFragment);
+                            */
                 }
 
                 // This 2-line code section below will navigate, I'm just leaving it here in
