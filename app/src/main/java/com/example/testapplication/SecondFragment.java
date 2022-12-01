@@ -1,9 +1,11 @@
 package com.example.testapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,12 +24,23 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class SecondFragment extends Fragment {
 
 private FragmentSecondBinding binding;
 private ArrayList<String[]> tempUserData = null;
+public File userDatabase; //to get the local userDatabase file
+private Scanner userDataScan; //to scan user database File
+
+    public String[][] userDataArray; //to store the data from the UserData file
+    /* ================================================================================
+        for connecting app to a server
+    UserLocalStore userLocalStore;
+    ================================================================================
+         */
+
 
 
     @Override
@@ -35,9 +48,15 @@ private ArrayList<String[]> tempUserData = null;
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+        /* ================================================================================
+        for connecting app to a server
+        userLocalStore = new UserLocalStore(SecondFragment.super.getContext());
+        ================================================================================
+         */
 
-      binding = FragmentSecondBinding.inflate(inflater, container, false);
-      return binding.getRoot();
+        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+
 
     }
 
@@ -60,19 +79,15 @@ private ArrayList<String[]> tempUserData = null;
         binding.submitLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //if credentials match username and password in the system, navigate to account page.
-                //else, pop up an error message that credentials don't match anything in our system.
 
+                //Receive user input
+                String userNameInput = Objects.requireNonNull(binding.loginUsername.getText()).toString(); //gets input from input text field
+                String passWordInput = Objects.requireNonNull(binding.loginPassword.getText()).toString(); //gets input from input password field
 
-                //currently log in sends button user back to home screen (disabled to show actual functionality)
-                /*
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-                */
+                // Log username and password in Logcat
+                Log.d("username", userNameInput);
+                Log.d("password", passWordInput);
 
-                //working on receiving user input below
-                String userNameInput = binding.loginUsername.getText().toString(); //gets input from input text field
-                String passWordInput = binding.loginPassword.getText().toString(); //gets input from input password field
 
                 //to look at local userDatabase below
                 boolean userNameFound = false; //initial value
@@ -80,7 +95,6 @@ private ArrayList<String[]> tempUserData = null;
 
                 try {
                     tempUserData = UserData.GetUserData();
-
 
                     for (String[] s:  tempUserData) {
                         if (s[1].equals(userNameInput)) {
@@ -92,25 +106,37 @@ private ArrayList<String[]> tempUserData = null;
                     }
 
                     if (userNameFound && passWordMatches) {
-                        //code here for routing to screen 3
-                    } else if (userNameFound) {
-                        //error for wrong password
+                        NavHostFragment.findNavController(SecondFragment.this)
+                                .navigate(R.id.action_SecondFragment_to_AccountPage);
                     } else {
-                        //error for username not found
+                        Toast.makeText(SecondFragment.super.getContext(),
+                                "Invalid username or password", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (Exception e) {
+                    System.out.println(e + ", "+ e.getMessage());
+                }
+
+
+                //if credentials match username and password in the system, navigate to account page.
+                /* ================================================================================
+                 Method for connecting app to a server
+                User user = new User(null, null);
+
+                userLocalStore.storeUserData(user);
+                userLocalStore.setUserLoggedIn(true);
+                //else, pop up an error message that credentials don't match anything in our system.
+                =====================================================================================
+                 */
+
 
                 }
 
-            }
-        });
-    }
-
-@Override
+            });
+        };
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
-
-}
+    };

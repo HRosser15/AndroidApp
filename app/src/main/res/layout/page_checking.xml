@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Balance: "
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/decBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/lBalance"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bDeposit"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:text="Deposit"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/bWithdraw"
+        app:layout_constraintTop_toBottomOf="@+id/bWithdraw" />
+
+    <Button
+        android:id="@+id/bWithdraw"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="50dp"
+        android:text="Withdraw"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lBalance" />
+
+    <Button
+        android:id="@+id/bTransfer"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:text="Transfer"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/bWithdraw"
+        app:layout_constraintTop_toBottomOf="@+id/bDeposit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
