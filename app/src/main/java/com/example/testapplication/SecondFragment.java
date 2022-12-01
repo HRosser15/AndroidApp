@@ -15,18 +15,20 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.File;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.nio.file.FileSystem;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SecondFragment extends Fragment {
 
 private FragmentSecondBinding binding;
-public File userDatabase; //to get the local userDatabase file
-private Scanner userDataScan; //to scan user database File
-    public String[][] userDataArray; //to store the data from the UserData file
+private ArrayList<String[]> tempUserData = null;
+
 
     @Override
     public View onCreateView(
@@ -40,6 +42,8 @@ private Scanner userDataScan; //to scan user database File
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+
+
         super.onViewCreated(view, savedInstanceState);
 
         /** login screen "BACK" button event - goes to home screen*/
@@ -71,31 +75,33 @@ private Scanner userDataScan; //to scan user database File
                 String passWordInput = binding.loginPassword.getText().toString(); //gets input from input password field
 
                 //to look at local userDatabase below
+                boolean userNameFound = false; //initial value
+                boolean passWordMatches = false;
+
                 try {
-                    //looking at and comparing user database here
+                    tempUserData = UserData.GetUserData();
 
 
-                   userDatabase = new File("UserData.csv");
-
-                   userDataScan = new Scanner(userDatabase);
-                   int i =0;
-                    while (userDataScan.hasNextLine()) {
-                        String temp = userDataScan.next();
-                        String[] tempArray = temp.split(",");
-
-                        for (int j=0; j < 6; j++) {
-                            userDataArray[i][j] = tempArray[j];
+                    for (String[] s:  tempUserData) {
+                        if (s[1].equals(userNameInput)) {
+                            userNameFound = true;
+                            if (s[2].equals(passWordInput)) {
+                                passWordMatches = true;
+                            }
                         }
-                        i++;
                     }
 
-
-
+                    if (userNameFound && passWordMatches) {
+                        //code here for routing to screen 3
+                    } else if (userNameFound) {
+                        //error for wrong password
+                    } else {
+                        //error for username not found
+                    }
 
                 } catch (Exception e) {
-                    System.out.println(e + ", "+ e.getMessage());
-                }
 
+                }
 
             }
         });

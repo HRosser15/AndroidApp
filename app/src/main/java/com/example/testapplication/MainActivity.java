@@ -13,6 +13,7 @@ import com.example.testapplication.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
@@ -38,6 +39,9 @@ private ActivityMainBinding binding;
                         .setAction("Action", null).show();
             }
         });
+
+        UserData.initialize(); //to start the UserData storage
+
     }
 @Override
     public boolean onCreateOptionsMenu(Menu menu) {
