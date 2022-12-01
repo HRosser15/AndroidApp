@@ -11,12 +11,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
-import com.example.testapplication.databinding.FragmentThirdBinding;
+import com.example.testapplication.databinding.FragmentFourthBinding;
 
 
-public class ThirdFragment extends Fragment {
+public class FourthFragment extends Fragment {
 
-    private FragmentThirdBinding binding;
+    private FragmentFourthBinding binding;
 
     @Override
     public View onCreateView(
@@ -24,7 +24,7 @@ public class ThirdFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentThirdBinding.inflate(inflater, container, false);
+        binding = FragmentFourthBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -32,16 +32,17 @@ public class ThirdFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         /** "BACK" button event - goes to home screen */
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
+        binding.returnToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_FirstFragment);
+                NavHostFragment.findNavController(FourthFragment.this)
+                        .navigate(R.id.action_FourthFragment_to_SecondFragment);
             }
         });
-
-        /** "SIGN UP" button event - Pops up error if invalid username or password; does nothing if valid */
+        /*
+        /** "SIGN UP" button event - Pops up error if invalid username or password; does nothing if valid
         binding.submitSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,8 +52,8 @@ public class ThirdFragment extends Fragment {
                 String password = binding.signupPassword.getText().toString(); //gets input from input password field
 
                 // Log new username and password in Logcat
-                Log.d("username", username);
-                Log.d("password", password);
+                Log.d("new username: ", username);
+                Log.d("new password: ", password);
 
                 // determine if username is unique
                 if (!usernameIsUnique(username)) {
@@ -71,31 +72,17 @@ public class ThirdFragment extends Fragment {
                 // meet requirements, but that is low priority right now.
                 // =====================================================================================
 
-
-
-                // If username and password are valid, create account and switch pages
-                if (pwIsStrong(password) && usernameIsUnique(username)) {
-                    // create a new user with input values
-                    User newUser = new User(username, password);
-
-                    // Log userId in Logcat
-                    Log.d("userId", String.valueOf(newUser.userId));
-
-                    // creates default checking account with new user's userId
-                    Checking checkingAccount = new Checking(newUser.userId);
-
-                    NavHostFragment.findNavController(ThirdFragment.this)
-                            .navigate(R.id.action_ThirdFragment_to_FourthFragment);
-                }
+                /** !!! Sign up button does nothing if username and password are valid */
 
                 // This 2-line code section below will navigate, I'm just leaving it here in
                 // case we can use it to navigate to the next fragment once we have it set up.
-                    //  NavHostFragment.findNavController(ThirdFragment.this)
-                    //          .navigate(R.id.action_ThirdFragment_to_FirstFragment);
+                //  NavHostFragment.findNavController(ThirdFragment.this)
+                //          .navigate(R.id.action_ThirdFragment_to_FirstFragment);
             }
-        });
+        //});
 
-    }
+
+    //}
 
 
 
