@@ -31,8 +31,7 @@ public class SecondFragment extends Fragment {
 
 private FragmentSecondBinding binding;
 private ArrayList<String[]> tempUserData = null;
-public File userDatabase; //to get the local userDatabase file
-private Scanner userDataScan; //to scan user database File
+
 
     public String[][] userDataArray; //to store the data from the UserData file
     /* ================================================================================
@@ -92,6 +91,7 @@ private Scanner userDataScan; //to scan user database File
                 //to look at local userDatabase below
                 boolean userNameFound = false; //initial value
                 boolean passWordMatches = false;
+                int userNum= -1; //to set current user
 
                 try {
                     tempUserData = UserData.GetUserData();
@@ -101,11 +101,13 @@ private Scanner userDataScan; //to scan user database File
                             userNameFound = true;
                             if (s[2].equals(passWordInput)) {
                                 passWordMatches = true;
+                                userNum = UserData.GetUserNumber(s);
                             }
                         }
                     }
 
                     if (userNameFound && passWordMatches) {
+                        UserData.SetCurrentUser(userNum);
                         NavHostFragment.findNavController(SecondFragment.this)
                                 .navigate(R.id.action_SecondFragment_to_AccountPage);
                     } else {

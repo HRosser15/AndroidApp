@@ -9,7 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.testapplication.databinding.PageCheckingBinding;
 import com.example.testapplication.databinding.PageSavingsBinding;
+
+import java.util.ArrayList;
 
 public class SavingsPage extends Fragment {
     private PageSavingsBinding binding;
@@ -23,6 +26,23 @@ public class SavingsPage extends Fragment {
     ) {
 
         binding = PageSavingsBinding.inflate(inflater, container, false);
+        String[] currentUserData = UserData.GetCurrentUser();
+
+        if (currentUserData[3].equals("Savings")) { //if the current user is a checking account, then set the balance, if not, find the checking account w same name and password
+            binding.decSavingsBalance.setText(currentUserData[4]);
+        } else {
+            try {
+                ArrayList<String[]> tempUserData = UserData.GetUserData();
+                for (String[] s : tempUserData) {
+                    if (s[1].equals(currentUserData[1]) && s[3].equals("Savings")) {
+                        binding.decSavingsBalance.setText(s[4]);
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
         return binding.getRoot();
 
     }

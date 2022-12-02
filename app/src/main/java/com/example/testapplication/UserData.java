@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class UserData {
     public static ArrayList<String[]> userData;
+    public static String[] currentUser;
 
     public static void initialize() {
 
@@ -28,6 +29,32 @@ public class UserData {
     public static void AddUserData(String[] toAdd) {
         userData.add(toAdd);
     }
+    public static int GetUserNumber (String[] s) {
+        boolean userFound = false;
+        int toReturn= 0;
+        for (String[] z: userData) {
+            if (z.equals(s)) {
+                userFound = true;
+                toReturn = userData.indexOf(z);
+            }
+        }
+        if (userFound) {
+            return toReturn;
+        } else {
+            return -1;
+        }
+    }
+    public static void SetCurrentUser(int j) {
+        currentUser = userData.get(j);
+    }
+    public static String[] GetCurrentUser() {
+        return currentUser;
+    }
+    public static void resetCurrentUser() {
+        currentUser = null;
+    }
+
+
 
 
 }
