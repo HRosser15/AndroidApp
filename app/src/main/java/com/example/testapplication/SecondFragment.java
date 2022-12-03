@@ -16,21 +16,31 @@ import com.example.testapplication.databinding.FragmentSecondBinding;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.File;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.nio.file.FileSystem;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class SecondFragment extends Fragment {
 
 private FragmentSecondBinding binding;
-public File userDatabase; //to get the local userDatabase file
-private Scanner userDataScan; //to scan user database File
+private ArrayList<String[]> tempUserData = null;
+
+
+    public String[][] userDataArray; //to store the data from the UserData file
     /* ================================================================================
         for connecting app to a server
     UserLocalStore userLocalStore;
     ================================================================================
          */
+
+
 
     @Override
     public View onCreateView(
@@ -50,6 +60,8 @@ private Scanner userDataScan; //to scan user database File
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+
+
         super.onViewCreated(view, savedInstanceState);
 
         /** login screen "BACK" button event - goes to home screen*/
@@ -75,27 +87,39 @@ private Scanner userDataScan; //to scan user database File
                 Log.d("username", userNameInput);
                 Log.d("password", passWordInput);
 
-                /** Temporary if statement to test log in feature - needs to be updated to check match from file/database */
-                if (userNameInput.equals("bob2") && passWordInput.equals("abcdef1!")) {
-
-                    NavHostFragment.findNavController(SecondFragment.this)
-                            .navigate(R.id.action_SecondFragment_to_AccountPage);
-                }
-                //pop up error if log in credentials don't match
-                else {
-                    Toast.makeText(SecondFragment.super.getContext(),
-                            "Invalid username or password", Toast.LENGTH_LONG).show();
-                }
 
                 //to look at local userDatabase below
+                boolean userNameFound = false; //initial value
+                boolean passWordMatches = false;
+                int userNum= -1; //to set current user
+
                 try {
-                    //looking at and comparing user database here
+                    tempUserData = UserData.GetUserData();
 
+                    for (String[] s:  tempUserData) {
+                        if (s[1].equals(userNameInput)) {
+                            userNameFound = true;
+                            if (s[2].equals(passWordInput)) {
+                                passWordMatches = true;
+                                userNum = UserData.GetUserNumber(s);
+                            }
+                        }
+                    }
 
+                    if (userNameFound && passWordMatches) {
+                        UserData.SetCurrentUser(userNum);
+                        NavHostFragment.findNavController(SecondFragment.this)
+                                .navigate(R.id.action_SecondFragment_to_AccountPage);
+                    } else {
+                        Toast.makeText(SecondFragment.super.getContext(),
+                                "Invalid username or password", Toast.LENGTH_LONG).show();
+                    }
 
                 } catch (Exception e) {
-
+                    System.out.println(e + ", "+ e.getMessage());
                 }
+
+
                 //if credentials match username and password in the system, navigate to account page.
                 /* ================================================================================
                  Method for connecting app to a server
@@ -108,14 +132,13 @@ private Scanner userDataScan; //to scan user database File
                  */
 
 
-            }
-        });
-    }
+                }
 
-@Override
+            });
+        };
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
-
-}
+    };
