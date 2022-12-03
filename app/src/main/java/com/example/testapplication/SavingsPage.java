@@ -36,6 +36,7 @@ public class SavingsPage extends Fragment {
                 for (String[] s : tempUserData) {
                     if (s[1].equals(currentUserData[1]) && s[3].equals("Savings")) {
                         binding.decSavingsBalance.setText(s[4]);
+                        binding.decAccountID.setText(s[0]);
                     }
                 }
             } catch (Exception e) {
@@ -76,7 +77,6 @@ public class SavingsPage extends Fragment {
             }
 
         });
-
 
     }
 

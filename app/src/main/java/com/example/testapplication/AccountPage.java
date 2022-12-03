@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import com.example.testapplication.databinding.PageAccountBinding;
+
+import java.util.ArrayList;
 
 public class AccountPage extends Fragment {
     private PageAccountBinding binding;
@@ -20,6 +23,18 @@ public class AccountPage extends Fragment {
     ) {
 
         binding = PageAccountBinding.inflate(inflater, container, false);
+
+        String[] currentUserData = UserData.GetCurrentUser();
+        try {
+            ArrayList<String[]> tempUserData = UserData.GetUserData();
+            for (String[] s : tempUserData) {
+                if (s[1].equals(currentUserData[1])) {
+                    binding.customerName.setText(s[1]);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         return binding.getRoot();
 
     }
