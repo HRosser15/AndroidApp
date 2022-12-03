@@ -53,7 +53,7 @@ public class SavingsDeposit extends Fragment {
                 String calculatedBalanceString = String.format("%.02f", calculatedBalance);
 
                 // add deposit to balance
-
+                currentUserData[4] = String.valueOf(calculatedBalance);
 
                 if (currentUserData[3].equals("Savings")) { //if the current user is a checking account, then set the balance, if not, find the checking account w same name and password
                     binding.tvSavingsAfterDeposit.setText(String.valueOf(calculatedBalance));
