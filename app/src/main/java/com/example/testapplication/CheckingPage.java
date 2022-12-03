@@ -26,6 +26,8 @@ public class CheckingPage extends Fragment {
             /** We need to grab the checking account balance from the database/file and assign it to the balance text field
              * Done ^^*/
 
+
+
     {
 
         binding = PageCheckingBinding.inflate(inflater, container, false);
@@ -38,6 +40,7 @@ public class CheckingPage extends Fragment {
                 ArrayList<String[]> tempUserData = UserData.GetUserData();
                 for (String[] s : tempUserData) {
                     if (s[1].equals(currentUserData[1]) && s[3].equals("Checking")) {
+                        UserData.SetCurrentUser(tempUserData.indexOf(s));
                         binding.decBalance.setText(s[4]);
                     }
                 }
@@ -51,6 +54,14 @@ public class CheckingPage extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.bDeposit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(CheckingPage.this)
+                        .navigate(R.id.action_CheckingPage_to_CheckingDeposit);
+            }
+        });
 
         /*
         binding.bLogout.setOnClickListener(new View.OnClickListener() {

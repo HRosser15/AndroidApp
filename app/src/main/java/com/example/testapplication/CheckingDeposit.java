@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.testapplication.R;
 import com.example.testapplication.databinding.DepositCheckingBinding;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class CheckingDeposit extends Fragment {
@@ -50,10 +51,28 @@ public class CheckingDeposit extends Fragment {
                  *  until this button is clicked. Then pressing the "Confirm Amount" button would complete
                  *  the deposit and complete the navigation below
                  */
-                tvCheckingAfterDeposit.setText(depositAmount);
 
-                NavHostFragment.findNavController(com.example.testapplication.CheckingDeposit.this)
-                        .navigate(R.id.action_CheckingDeposit_to_CheckingPage);
+                String[] currentUserData = UserData.GetCurrentUser();
+
+                if (currentUserData[3].equals("Checking")) { //if the current user is a checking account, then set the balance, if not, find the checking account w same name and password
+                    decDepositAmount = decDepositAmount+Double.parseDouble(currentUserData[4]);
+                    UserData.setBalance(String.valueOf(decDepositAmount));
+                } else {
+                    try {
+                        ArrayList<String[]> tempUserData = UserData.GetUserData();
+                        for (String[] s : tempUserData) {
+                            if (s[1].equals(currentUserData[1]) && s[3].equals("Checking")) {
+                                decDepositAmount = decDepositAmount+Double.parseDouble(currentUserData[4]);
+                                UserData.setBalance(String.valueOf(decDepositAmount));
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }
+                tvCheckingAfterDeposit.setText(String.valueOf(decDepositAmount));
+
+
             }
         });
 

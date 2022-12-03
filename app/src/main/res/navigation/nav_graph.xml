@@ -89,6 +89,9 @@
         <action
             android:id="@+id/action_SavingsPage_to_SavingsTransfer"
             app:destination="@+id/CheckingTransfer" />
+        <action
+            android:id="@+id/action_CheckingPage_to_CheckingDeposit"
+            app:destination="@id/CheckingDeposit" />
 
     </fragment>
     <fragment
