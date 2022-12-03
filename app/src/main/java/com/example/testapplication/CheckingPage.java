@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.testapplication.databinding.PageCheckingBinding;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CheckingPage extends Fragment {
     private PageCheckingBinding binding;
@@ -62,6 +64,13 @@ public class CheckingPage extends Fragment {
                         .navigate(R.id.action_CheckingPage_to_CheckingDeposit);
             }
         });
+
+        //This "Confirm" button will appear once the user clicks "Deposit"
+        /* need to make a button for the confimrm below
+        Button confirmDeposit = Objects.requireNonNull(binding.bCheckingConfirmDeposit);
+        showButton(R.id.bCheckingConfirmDeposit);
+        */
+
 
         /*
         binding.bLogout.setOnClickListener(new View.OnClickListener() {
