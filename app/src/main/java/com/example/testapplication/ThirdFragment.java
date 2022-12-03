@@ -15,7 +15,7 @@ import com.example.testapplication.databinding.FragmentThirdBinding;
 
 import java.util.ArrayList;
 
-
+/** Sign Up Page */
 public class ThirdFragment extends Fragment {
 
     private FragmentThirdBinding binding;

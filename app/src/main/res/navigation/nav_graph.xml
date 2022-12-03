@@ -92,6 +92,37 @@
 
     </fragment>
     <fragment
+        android:id="@+id/CheckingWithdraw"
+        android:name="com.example.testapplication.CheckingWithdraw"
+        android:label="Withdraw From Checking"
+        tools:layout="CheckingWithdraw" >
+
+        <action
+            android:id="@+id/action_CheckingWithdraw_to_Checking"
+            app:destination="@+id/CheckingPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/CheckingDeposit"
+        android:name="com.example.testapplication.CheckingDeposit"
+        android:label="Deposit To Checking"
+        tools:layout="CheckingDeposit" >
+
+        <action
+            android:id="@+id/action_CheckingDeposit_to_CheckingPage"
+            app:destination="@+id/CheckingPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/CheckingTransfer"
+        android:name="com.example.testapplication.CheckingTransfer"
+        android:label="Transfer"
+        tools:layout="CheckingTransfer" >
+
+        <action
+            android:id="@+id/action_CheckingTransfer_to_CheckingPage"
+            app:destination="@+id/CheckingPage" />
+    </fragment>
+
+    <fragment
         android:id="@+id/SavingsPage"
         android:name="com.example.testapplication.SavingsPage"
         android:label="Savings Account"
@@ -126,6 +157,16 @@
 
         <action
             android:id="@+id/action_SavingsDeposit_to_SavingsPage"
+            app:destination="@+id/SavingsPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/SavingsTransfer"
+        android:name="com.example.testapplication.SavingsTransfer"
+        android:label="Transfer"
+        tools:layout="SavingsTransfer" >
+
+        <action
+            android:id="@+id/action_SavingsTransfer_to_SavingsPage"
             app:destination="@+id/SavingsPage" />
     </fragment>
 

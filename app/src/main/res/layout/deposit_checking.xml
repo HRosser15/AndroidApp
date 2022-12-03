@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tvSavingsDepositPrompt"
+        android:id="@+id/tvCheckingDepositPrompt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -20,23 +20,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tbSavingsDepositBox"
+        android:id="@+id/tbCheckingDepositBox"
         android:layout_width="349dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSavingsDepositPrompt">
+        app:layout_constraintTop_toBottomOf="@+id/tvCheckingDepositPrompt">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tbSavingsDepositAmount"
+            android:id="@+id/tbCheckingDepositAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/bSavingsSubmitDeposit"
+        android:id="@+id/bCheckingSubmitDeposit"
         android:layout_width="300dp"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
@@ -45,22 +45,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbSavingsDepositBox" />
+        app:layout_constraintTop_toBottomOf="@+id/tbCheckingDepositBox" />
 
     <TextView
-        android:id="@+id/tvSavingsBalanceAfterDeposit"
+        android:id="@+id/tvCheckingBalanceAfterDeposit"
         android:layout_width="349dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Savings balance after Deposit: "
+        android:text="Checking balance after Deposit: "
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bSavingsSubmitDeposit" />
+        app:layout_constraintTop_toBottomOf="@+id/bCheckingSubmitDeposit" />
 
     <TextView
-        android:id="@+id/tvSavingsAfterDeposit"
+        android:id="@+id/tvCheckingAfterDeposit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -68,19 +68,5 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSavingsBalanceAfterDeposit" />
-
-    <Button
-        android:id="@+id/bSavingsConfirmDeposit"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
-        android:enabled="false"
-        android:text="Confirm"
-        android:textSize="24sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSavingsAfterDeposit" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tvCheckingBalanceAfterDeposit" />
 </androidx.constraintlayout.widget.ConstraintLayout>

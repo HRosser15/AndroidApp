@@ -33,7 +33,7 @@ public class FourthFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        /** "BACK" button event - goes to home screen */
+        /** "Log In" button event - goes to home screen */
         binding.returnToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
