@@ -53,8 +53,6 @@ public class UserData {
     public static void resetCurrentUser() {
         currentUser = null;
     }
-
-    /* Basic method to update user's balance
     public static void setBalance (String s) {
         Float floatBalance = Float.parseFloat(s);
         String newBalance = String.format("%.02f", floatBalance);
@@ -63,9 +61,3 @@ public class UserData {
         }
 
     }
-     */
-
-
-
-
-}

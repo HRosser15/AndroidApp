@@ -82,13 +82,16 @@
             app:destination="@id/AccountPage" />
         <action
             android:id="@+id/action_SavingsPage_to_SavingsWithdraw"
-            app:destination="@+id/CheckingWithdraw" />
+            app:destination="@+id/SavingsWithdraw" />
         <action
             android:id="@+id/action_SavingsPage_to_SavingsDeposit"
-            app:destination="@+id/CheckingDeposit" />
+            app:destination="@+id/SavingsDeposit" />
         <action
             android:id="@+id/action_SavingsPage_to_SavingsTransfer"
-            app:destination="@+id/CheckingTransfer" />
+            app:destination="@+id/SavingsTransfer" />
+        <action
+            android:id="@+id/action_CheckingPage_to_CheckingDeposit"
+            app:destination="@id/CheckingDeposit" />
 
     </fragment>
     <fragment

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.testapplication.databinding.PageCheckingBinding;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CheckingPage extends Fragment {
     private PageCheckingBinding binding;
@@ -25,6 +27,8 @@ public class CheckingPage extends Fragment {
             Bundle savedInstanceState)
             /** We need to grab the checking account balance from the database/file and assign it to the balance text field
              * Done ^^*/
+
+
 
     {
 
@@ -38,6 +42,7 @@ public class CheckingPage extends Fragment {
                 ArrayList<String[]> tempUserData = UserData.GetUserData();
                 for (String[] s : tempUserData) {
                     if (s[1].equals(currentUserData[1]) && s[3].equals("Checking")) {
+                        UserData.SetCurrentUser(tempUserData.indexOf(s));
                         binding.decBalance.setText(s[4]);
                     }
                 }
@@ -51,6 +56,21 @@ public class CheckingPage extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.bDeposit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(CheckingPage.this)
+                        .navigate(R.id.action_CheckingPage_to_CheckingDeposit);
+            }
+        });
+
+        //This "Confirm" button will appear once the user clicks "Deposit"
+        /* need to make a button for the confimrm below
+        Button confirmDeposit = Objects.requireNonNull(binding.bCheckingConfirmDeposit);
+        showButton(R.id.bCheckingConfirmDeposit);
+        */
+
 
         /*
         binding.bLogout.setOnClickListener(new View.OnClickListener() {
