@@ -5,18 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="526dp"
+        android:layout_height="867dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mobile_banking_app_uiux_layout5" />
+
+    <TextView
+        android:id="@+id/signup_thankyou_msg_continue"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/courier_prime"
+        android:text="for choosing MoonTrust Banking"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_thankyou_msg" />
+
     <TextView
         android:id="@+id/signup_thankyou_msg"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="164dp"
         android:layout_marginEnd="30dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Thanks for choosing MoonTrust Branking!"
+        android:fontFamily="@font/courier_prime"
+        android:text="THANK YOU"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,9 +52,10 @@
         android:id="@+id/return_to_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Log In"
+        android:layout_marginTop="20dp"
+        android:text="LOG IN"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_thankyou_msg" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_thankyou_msg_continue" />
 </androidx.constraintlayout.widget.ConstraintLayout>

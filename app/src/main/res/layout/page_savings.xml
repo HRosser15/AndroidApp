@@ -5,58 +5,145 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="535dp"
+        android:layout_height="855dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mobile_banking_app_uiux_layout4" />
+
     <TextView
         android:id="@+id/lSavingsBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="80dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Balance: "
-        android:textSize="34sp"
+        android:layout_marginStart="28dp"
+        android:fontFamily="@font/courier_prime"
+        android:text="Available Balance"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/decSavingsBalance" />
+
+    <TextView
+        android:id="@+id/Account_Type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/courier_prime"
+        android:text="Savings Account ..."
+        android:textColor="#000000"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dollar_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/courier_prime"
+        android:text="$"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/lSavingsBalance"
+        app:layout_constraintStart_toStartOf="@+id/Account_Type"
+        app:layout_constraintTop_toBottomOf="@+id/Account_Type" />
 
     <TextView
         android:id="@+id/decSavingsBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="80dp"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/courier_prime"
+        android:text="0.00"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
         android:textSize="34sp"
-        app:layout_constraintStart_toEndOf="@+id/lSavingsBalance"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/dollar_sign"
+        app:layout_constraintTop_toBottomOf="@+id/Account_Type" />
 
-    <Button
-        android:id="@+id/bSavingsDeposit"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="10dp"
-        android:text="Deposit"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/bSavingsWithdraw"
-        app:layout_constraintTop_toBottomOf="@+id/bSavingsWithdraw" />
+    <TextView
+        android:id="@+id/decAccountID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/courier_prime"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Account_Type"
+        app:layout_constraintStart_toEndOf="@+id/Account_Type"
+        app:layout_constraintTop_toTopOf="@+id/Account_Type" />
 
-    <Button
-        android:id="@+id/bSavingsWithdraw"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="50dp"
-        android:text="Withdraw"
-        android:textSize="24sp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="413dp"
+        android:layout_height="507dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/bSavingsTransfer"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:text="Transfer"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/bSavingsDeposit"
+            app:layout_constraintTop_toBottomOf="@+id/bSavingsDeposit" />
+
+        <Button
+            android:id="@+id/bSavingsDeposit"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:text="Deposit"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/bSavingsWithdraw"
+            app:layout_constraintTop_toBottomOf="@+id/bSavingsWithdraw" />
+
+        <Button
+            android:id="@+id/bSavingsWithdraw"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="44dp"
+            android:fontFamily="@font/courier_prime"
+            android:text="Withdraw"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="415dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lSavingsBalance" />
+        app:layout_constraintTop_toBottomOf="@+id/lSavingsBalance"
+        app:tabTextColor="#000000">
 
-    <Button
-        android:id="@+id/bSavingsTransfer"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="10dp"
-        android:text="Transfer"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/bSavingsWithdraw"
-        app:layout_constraintTop_toBottomOf="@+id/bSavingsDeposit" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Overview" />
+
+        <com.google.android.material.tabs.TabItem
+            style="@style/Theme.TestApplication.NoActionBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Routing Details"
+            tools:layout_editor_absoluteX="208dp"
+            tools:layout_editor_absoluteY="132dp" />
+
+    </com.google.android.material.tabs.TabLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

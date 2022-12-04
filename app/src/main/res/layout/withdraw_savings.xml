@@ -5,15 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="468dp"
+        android:layout_height="855dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mobile_banking_app_uiux_layout5" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="500dp"
+        android:layout_height="450dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_round_rectangle_24" />
+
+    <ImageView
+        android:id="@+id/imageView23"
+        android:layout_width="500dp"
+        android:layout_height="450dp"
+        android:layout_marginTop="108dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_round_rectangle_24" />
+
     <TextView
         android:id="@+id/tvSavingsWithdrawPrompt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="30dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="How much would you like to withdraw? :"
+        android:fontFamily="@font/courier_prime"
+        android:text="How much would you like to withdraw?"
+        android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,6 +65,7 @@
             android:id="@+id/tbSavingsWithdrawAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#F6F3E8"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,6 +75,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
         android:text="Withdraw"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
@@ -52,8 +87,10 @@
         android:layout_width="349dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/courier_prime"
         android:text="Savings balance after withdrawal: "
+        android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +101,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/courier_prime"
+        android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

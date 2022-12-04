@@ -12,8 +12,8 @@ public class UserData {
         userData = new ArrayList<String[]>();
 
         String[] toAddInitially = new String[2];
-        toAddInitially[0] = "1,bobert2,JiKy_M1!,Checking,1000"; //format: (account number (+1 each)), (userName), (password), (balance)
-        toAddInitially[1] = "2,bobert2,JiKy_M1!,Savings,4000"; //format: (account number (+1 each)), (userName), (password), (balance)
+        toAddInitially[0] = "1,bobert2,JiKy_M1!,Checking,1000.00"; //format: (account number (+1 each)), (userName), (password), (balance)
+        toAddInitially[1] = "2,bobert2,JiKy_M1!,Savings,4000.00"; //format: (account number (+1 each)), (userName), (password), (balance)
 
 
         for (int i=0; i < toAddInitially.length; i++) {
