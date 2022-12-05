@@ -36,38 +36,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_round_rectangle_24" />
 
+
+
+
+
     <TextView
-        android:id="@+id/tvSavingsTransferPrompt"
+        android:id="@+id/tvSavingsTransferDestination"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="92dp"
         android:layout_marginEnd="30dp"
         android:fontFamily="@font/courier_prime"
-        android:text="How much would you like to transfer?"
+        android:text="Where would you like to transfer money?"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tbSavingsTransferBox"
-        android:layout_width="349dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSavingsTransferPrompt">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tbSavingsTransferAmount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#F6F3E8"
-            android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toTopOf="parent"  />
 
     <Button
         android:id="@+id/bSavingsTransferToChecking"
@@ -83,29 +70,19 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSavingsTransferDestination" />
 
     <Button
-        android:id="@+id/bSavingsTransferToAccountNum"
+        android:id="@+id/bSavingsTransferToSavings"
         android:layout_width="300dp"
         android:layout_height="70dp"
         android:layout_marginTop="15dp"
         android:backgroundTint="#F6F3E8"
-        android:text="Another Account"
+        android:text="My Checking"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bSavingsTransferToChecking" />
 
-    <TextView
-        android:id="@+id/tvSavingsTransferDestination"
-        android:layout_width="349dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/courier_prime"
-        android:text="Where would you like to transfer money?"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbSavingsTransferBox" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

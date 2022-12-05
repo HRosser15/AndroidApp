@@ -138,8 +138,8 @@
             android:id="@+id/action_SavingsPage_to_SavingsDeposit"
             app:destination="@+id/SavingsDeposit" />
         <action
-            android:id="@+id/action_SavingsPage_to_SavingsTransfer"
-            app:destination="@+id/SavingsTransfer" />
+            android:id="@+id/action_SavingsPage_to_SavingsTransferToChecking"
+            app:destination="@+id/SavingsTransferToChecking" />
 
     </fragment>
     <fragment
@@ -169,7 +169,28 @@
         tools:layout="SavingsTransfer" >
 
         <action
-            android:id="@+id/action_SavingsTransfer_to_SavingsPage"
+            android:id="@+id/action_SavingsTransfer_to_SavingsTransferToSavings"
+            app:destination="@+id/SavingsTransferToSavings" />
+    </fragment>
+    <fragment
+        android:id="@+id/SavingsTransferToSavings"
+        android:name="com.example.testapplication.SavingsTransferToSavings"
+        android:label="Transfer"
+        tools:layout="SavingsTransferToSavings" >
+
+        <action
+            android:id="@+id/action_SavingsTransferToSavings_to_SavingsPage"
+            app:destination="@+id/SavingsPage" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SavingsTransferToChecking"
+        android:name="com.example.testapplication.SavingsTransferToChecking"
+        android:label="Transfer"
+        tools:layout="SavingsTransferToChecking" >
+
+        <action
+            android:id="@+id/action_SavingsTransferToChecking_to_SavingsPage"
             app:destination="@+id/SavingsPage" />
     </fragment>
 
